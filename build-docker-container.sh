@@ -5,7 +5,7 @@ if [ -z "$GO_PIPELINE_LABEL" ] ; then
     echo $GO_PIPELINE_LABEL
 fi
 
-if [ -z "DOCKER_REGISTRY_HOST" ] ; then
+if [ -z "$DOCKER_REGISTRY_HOST" ] ; then
     DOCKER_REGISTRY_HOST=docker-registry
 fi
 
