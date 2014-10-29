@@ -5,8 +5,8 @@ if [ -z "$GO_PIPELINE_LABEL" ] ; then
     echo $GO_PIPELINE_LABEL
 fi
 
-if [ -z "DOCKER_REGISTRY_HOST" ] ; then
-    DOCKER_REGISTRY_HOST=docker-registry
+if [ -z "$DOCKERREGISTRY_HOST" ] ; then
+    DOCKERREGISTRY_HOST="${DOCKERREGISTRY_PORT_5000_TCP_ADDR}"
 fi
 
-docker pull $DOCKER_REGISTRY_HOST:5000/doodleshop/$GO_PIPELINE_LABEL
+docker pull $DOCKERREGISTRY_HOST:5000/doodleshop/$GO_PIPELINE_LABEL

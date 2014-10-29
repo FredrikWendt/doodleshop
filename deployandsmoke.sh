@@ -12,7 +12,10 @@ sudo docker rm -f doodleshop-${INSTANS} || /bin/true
 
 # Download newly built version
 echo Pulling new doodleshop docker image
-sudo docker pull docker-registry:5000/doodleshop/$VERSION
+if [ -z "$DOCKERREGISTRY_HOST" ] ; then
+    DOCKERREGISTRY_HOST="${DOCKERREGISTRY_PORT_5000_TCP_ADDR}"
+fi
+sudo docker pull $DOCKERREGISTRY_HOST:5000/doodleshop/$VERSION
 
 # Start a new one
 echo running sudo docker run -d -e "DOODLE_ENV=${DOODLE_ENV}" --name doodleshop-${INSTANS} -p ${PORTPREFIX}${PORT}:${PORT} doodleshop/$VERSION
